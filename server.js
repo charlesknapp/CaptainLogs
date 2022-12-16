@@ -81,6 +81,12 @@ app.get('/logs/:id/edit', (req, res)=> {
 app.put('/logs/:id', (req, res) => {
     // find the Logs by ID and update
     // redirect to the Logs's show page
+        // shipIsBroken checkbox
+        if (req.body.shipIsBroken === 'on') {
+            req.body.shipIsBroken = true;
+        } else {
+            req.body.shipIsBroken = false;
+        }
     Logs.findByIdAndUpdate(req.params.id, req.body, (err, updatedLogs) => {
         console.log(updatedLogs)
         res.redirect(`/logs/${req.params.id}`)

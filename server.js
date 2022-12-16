@@ -4,7 +4,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require("express")
 const app = express()
-const Pokemon  = require("./models/captain")
+const logs  = require("./models/logs")
+const bodyParser = require('body-parser')
 
 //include the method-override package place this where you instructor places it
 const methodOverride = require('method-override');
@@ -34,9 +35,16 @@ app.get("/", (req, res) => {
   });
 
 // NEW ROUTING //
-app.get("/new", (req, res) => {
+app.get("/logs/new", (req, res) => {
     res.render('New')
 });
+
+// CREATE ROUTING //
+app.post('/logs', (req, res) => {
+    logs.create(req.body, (error, createdLogs) => {
+        res.send(req.body)
+    });
+})
 
 // APP LISTENING PORT //
 app.listen( 3000, () => {

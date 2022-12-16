@@ -1,14 +1,13 @@
-# PokedexApp
+# Captains Logs
 
-A simple directory application which has been themed for Pokemon.<br>
-This PokeDex application covers the main CRUD routes<br>
+A simple CRUD application with timestamped logging!<br>
+This application covers the main CRUD routes<br>
 (Create, Read, Update, Delete)
 <br>
 <br>
-<img src="https://i.gyazo.com/05abe9c0d9676ba84104396afc8857a4.png">
-<br>
 <h2>To Run</h2>
-Download the source and install the required dependences:<br>
+1. Create an <b>.ENV</b> file with your database URL and key<br>
+2. Download the source and install the required dependences (you can do this with <b>npm i</b>):<br>
 <ul>
 <li>nodemon</li>
 <li>express</li>

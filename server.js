@@ -46,6 +46,12 @@ app.get("/new", (req, res) => {
 
 // POST ROUTING //
 app.post('/logs', (req, res) => {
+    // shipIsBroken checkbox
+    if (req.body.shipIsBroken === 'on') {
+        req.body.shipIsBroken = true;
+    } else {
+        req.body.shipIsBroken = false;
+    }
     Logs.create(req.body, (error, createdLogs) => {
         res.redirect("/");
     });

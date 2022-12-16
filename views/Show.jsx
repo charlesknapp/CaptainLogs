@@ -10,9 +10,9 @@ class Show extends React.Component {
             <body>
                 <div>
                     <a href="/" className="homeLink">Homepage Logo</a>
-                    <h2 className="pokeName">{Logs.title}</h2>
-                    <p>{Logs.entry}</p>
-                    <p>{Logs.shipIsBroken}</p>
+                    <h2 className="logTitle">{Logs.title}</h2> <br />
+                    <p>{Logs.entry}</p><br />
+                    <p className="shipInfo">{Logs.shipIsBroken ? `Ship Needs Maintenance` : `No Maintenance Required`}</p>
                     <br />
                     <br />
                     <br />

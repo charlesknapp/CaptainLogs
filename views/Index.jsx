@@ -13,8 +13,8 @@ export default class Index extends Component {
                     {Logs.map((Logs) => {
                         return (
                             <li>
-                                <a href={`/logs/${Logs.id}`}> {Logs.title}</a>
-                                <a href={`/logs/${Logs.id}/edit`} className="editor">Edit {Logs.title}</a>
+                                <a href={`/logs/${Logs.id}`}> {Logs.title}</a><br />
+                                <a href={`/logs/${Logs.id}/edit`} className="editor">Edit {Logs.title}</a><br />
                                 <form action={`/logs/${Logs.id}?_method=DELETE`} method="POST">
                                     <input type="submit" value="Remove Log"/>
                                 </form>

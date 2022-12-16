@@ -7,6 +7,7 @@ This application covers the main CRUD routes<br>
 <br>
 <h2>To Run</h2>
 Download the source and install the required dependences:<br>
+create an <b>.ENV</b> file with your database URL and key<br>
 <ul>
 <li>nodemon</li>
 <li>express</li>

@@ -16,7 +16,7 @@ export default class Edit extends Component {
                   Log Entry: <br />
                 <textarea id="entry" name="entry" rows="4" cols="50" placeholder="Enter your log information here" autoComplete="off" defaultValue={Logs.entry}>
                 </textarea><br />
-                  Broken Ship? <input type="checkbox" name="shipIsBroken" defaultValue={Logs.shipIsBroken}/><br />
+                  Broken Ship? <input type="checkbox" name="shipIsBroken" defaultChecked={Logs.shipIsBroken}/><br />
                 <input type="submit" name="" value="Submit New Log" />
                 </form>
             </div>

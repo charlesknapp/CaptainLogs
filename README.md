@@ -7,7 +7,7 @@ This application covers the main CRUD routes<br>
 <br>
 <h2>To Run</h2>
 1. Create an <b>.ENV</b> file with your database URL and key<br>
-2. Download the source and install the required dependences:<br>
+2. Download the source and install the required dependences (you can do this with <b>npm i</b>):<br>
 <ul>
 <li>nodemon</li>
 <li>express</li>

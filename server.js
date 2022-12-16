@@ -4,7 +4,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require("express")
 const app = express()
-const logs  = require("./models/logs")
+const Logs  = require("./models/logs")
 const bodyParser = require('body-parser')
 
 //include the method-override package place this where you instructor places it
@@ -31,20 +31,62 @@ mongoose.connection.once('open', () => {
 
 // INDEX ROUTING //
 app.get("/", (req, res) => {
-    res.send('Index Route')
+    //find all logs
+    Logs.find({}, (error, allLogs)=>{
+      res.render('Index', {
+        Logs: allLogs
+      })
+    }) 
   });
 
 // NEW ROUTING //
-app.get("/logs/new", (req, res) => {
+app.get("/new", (req, res) => {
     res.render('New')
 });
 
-// CREATE ROUTING //
+// POST ROUTING //
 app.post('/logs', (req, res) => {
-    logs.create(req.body, (error, createdLogs) => {
-        res.send(req.body)
+    Logs.create(req.body, (error, createdLogs) => {
+        res.redirect("/");
     });
 })
+
+// SHOW ROUTING //
+app.get( '/logs/:id', (req, res) => {
+    Logs.findById(req.params.id, (err, foundLogs) => {
+        res.render('Show', {
+            Logs: foundLogs
+        })
+    })
+});
+
+// EDITING ROUTING //
+app.get('/logs/:id/edit', (req, res)=> {
+    // finding Logs by ID
+    // render an edit form
+    // pass in the Logs data "payload"
+    Logs.findById(req.params.id, (err, foundLogs) => {
+        res.render('Edit', {
+            Logs: foundLogs
+        })
+    })
+})
+// UPDATE ROUTING //
+app.put('/logs/:id', (req, res) => {
+    // find the Logs by ID and update
+    // redirect to the Logs's show page
+    Logs.findByIdAndUpdate(req.params.id, req.body, (err, updatedLogs) => {
+        console.log(updatedLogs)
+        res.redirect(`/logs/${req.params.id}`)
+    })
+})
+
+// DELETE ROUTING //
+app.delete('/logs/:id', (req, res)=>{
+    Logs.findByIdAndRemove(req.params.id, (err, deletedLogs) => {
+        res.redirect('/')
+    })
+});
 
 // APP LISTENING PORT //
 app.listen( 3000, () => {
